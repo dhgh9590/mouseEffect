@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>mouseEffect04</title>
+
+    <link rel="stylesheet" href="css/reset.css"><!-- 리셋 css -->
+    <link rel="stylesheet" href="css/style.css"><!-- 스타일 css -->
+    <link rel="stylesheet" href="css/font-awesome.css"><!-- 폰트어썸 구버전 css -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"><!-- 폰트어썸 신버전 CDN -->
+
+    
+</head>
+<body class="mouse bg">
+
+    <!-- main -->
+    <main>
+        <div class="cursor"></div>
+
+        <article class="mouseCont">
+            <p>I dream my painting and I paint my dream</p>
+            <p>나는 나의 그림을 <em>꿈</em> 꾸고, 내 <em>꿈</em>을 그린다.</p>
+        </article>
+    </main>
+    <!-- //main -->
+
+    <!-- info -->
+    <div class="info">
+        <h1><a href="mouseIndex.html">Mouse Effect04 - Javascript</a></h1>
+        <p>마우스 이펙트 - 조명 효과</p>
+    </div>
+
+    <div class="info right">
+        <ul>
+            <li><a href="/mouseEffect/Effect01/index.html">1</a></li>
+            <li><a href="/mouseEffect/Effect02/index.html">2</a></li>
+            <li><a href="/mouseEffect/Effect03/index.html">3</a></li>
+            <li class="active"><a href="/mouseEffect/Effect04/index.html">4</a></li>
+            <li><a href="/mouseEffect/Effect05/index.html">5</a></li>
+            <li><a href="/mouseEffect/Effect06/index.html">6</a></li>
+            <li><a href="/mouseEffect/Effect07/index.html">7</a></li>
+        </ul>
+    </div>
+
+    <div class="info left">
+        <ul>
+            <li>pageX : <span class="pageX">0</span></li>
+            <li>pageY : <span class="pageY">0</span></li>
+        </ul>
+    </div>
+    <!-- //info -->
+    <script>
+        const cursor = document.querySelector(".cursor");
+        const Owidth = cursor.offsetWidth; //보더 포함
+        const Cwidth = cursor.clientWidth; //보더 미포함
+        const circle = cursor.getBoundingClientRect(); //요소의 세로,가로 값을 구함
+
+        function follow(e){
+            document.querySelector(".pageX").innerText = e.pageX;
+            document.querySelector(".pageY").innerText = e.pageY;
+
+            let x = e.pageX - circle.width/2 + "px";
+            let y = e.pageY - circle.height/2 + "px";
+
+            cursor.style.cssText = `left:${x}; top:${y};`
+        }
+
+        window.addEventListener("mousemove", follow);
+    </script>
+</body>
+</html>
